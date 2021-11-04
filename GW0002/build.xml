@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir=".." name="GW0002">
+	<property file="GW0002/build.properties" />
+	
+	<target name="clean" description="ビルト用ワークフォルダを再作成する">
+		<delete dir="${target.dir}"></delete>
+		<mkdir dir="${target.dir}"></mkdir>
+	</target>
+	
+	<target name="make-jar">
+		<echo>jarファイル作成</echo>
+		<jar destfile="${target.jar.file}" basedir="${target.bin.dir}"></jar>
+	</target>
+	
+	<target name="make-class-file">
+		<echo>javaソースのコンパイル</echo>
+		<mkdir dir="${target.bin.dir}"></mkdir>
+		<javac srcdir="${java.src.dir}" destdir="${target.bin.dir}" debug="true" includeAntRuntime="false" source="${java.src.version}"  encoding="${java.src.encoding}">
+				<classpath>
+					<fileset dir="${java.lib.dir}" includes="**/*.zip, **/*.jar" />
+				</classpath>
+		</javac>
+		
+		<echo>必要ファイルのコピー</echo>
+		<mkdir dir="${target.sh.dir}" />
+		<mkdir dir="${target.conf.dir}" />
+		<mkdir dir="${target.lib.dir}" />
+		
+		<echo>shファイル</echo>
+		<copy todir="${target.sh.dir}">
+			<fileset dir="${sh.dir}" includes="**/*" />
+		</copy>
+		
+		<echo>設定ファイル(${envName})</echo>
+		<copy todir="${target.conf.dir}">
+			<fileset dir="${conf.env.dir}" includes="**/*"></fileset>
+		</copy>
+		
+		<echo>ライブラリ</echo>
+		<copy todir="${target.lib.dir}">
+			<fileset dir="${java.lib.dir}" includes="**/*"></fileset>
+		</copy>
+	</target>
+</project>
