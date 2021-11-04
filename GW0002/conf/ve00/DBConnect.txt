@@ -1,0 +1,8 @@
+# 環境設定
+#kikan.host=jdbc:mysql://localhost:3306/nanaco?useAffectedRows=TRUE&amp;serverTimezone=UTC
+#kikan.user=root
+#kikan.password=root
+
+kikan.host=jdbc:mysql://localhost:3306/nanaco?serverTimezone=UTC
+kikan.user=root
+kikan.password=root

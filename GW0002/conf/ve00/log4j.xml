@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+	<!-- コンソールにログを出力するConsoleAppenderをSTDOUTとして定義 -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="threshold" value="debug" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%-5p] %C{1} %m %n" />
+		</layout>
+	</appender>
+	
+	<!-- ファイルにログを出力するDailyRollingFileAppenderをDAILYFILEとして定義 -->
+	<appender name="DAILYFILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="D:/module/app/sub/ONG/GW0002/logs/GW0002.log" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="DataPattern" value="'_'yyyyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%-5p] %C{1} %m %n"/>
+		</layout>
+	</appender>
+	
+	<logger name="nanacosetrequestdata">
+		<level value="debug" />
+		<appender-ref ref="DAILYFILE" />
+	</logger>
+	
+	<root>
+		<appender-ref ref="STDOUT" />
+	</root>

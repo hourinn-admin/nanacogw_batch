@@ -1,0 +1,53 @@
+drop table if exists TRN_NANACO_ADD_POINT;
+CREATE TABLE TRN_NANACO_ADD_POINT (
+	SEQ_NO							bigint(15),
+	REQUEST_BUSINESS_NO				varchar(20)  	not null,
+	ORDER_NO						varchar(50) ,
+	USER_HASH						varchar(128),
+	CUST_ID							varchar(50),
+	CAMPAIGN_ID						varchar(50),
+	CAMPAIGN_ID_7CN					varchar(50)	,
+	NANACO_NO						varchar(50),
+	OLD_NANACO_NO					varchar(50),
+	ADD_POINT						int(6) 			not null default 0,
+	RESULT_ADD_POINT				bigint(20),
+	DATA_STATUS						int(2),
+	APPLICATION_YMD					date,
+	REFLECT_HOPE_YMD				date,
+	ISSUS_YMD						date,
+	OMNI_FLG						int(1) 			not null default 0,
+	ERROR_FLG						int(1) 			not null default 0,
+	DATA_DIVISION_ERROR				varchar(1),
+	REFLECT_HOPE_DAY_ERROR			varchar(1),
+	APPLICATION_YMD_ERROR			varchar(1),
+	POINT_ERROR						varchar(1),
+	REFLECT_HOPE_YMD_RANGE_ERROR	varchar(1),
+	APPLICATION_YMD_CORP_ERROR		varchar(1),
+	CUST_ID_ERROR					varchar(1),
+	UNAVAILABLE_CUST_ERROR			varchar(1),
+	UNAVAILABLE_CUST_NEGA_ERROR		varchar(1),
+	POINT_CODE_ERROR				varchar(1),
+	CAMPAIGN_ID_ERROR				varchar(1),
+	FILTER1							varchar(1),
+	FILTER2							varchar(1),
+	FILTER3							varchar(1),
+	FILTER4							varchar(1),
+	FILTER5							varchar(1),
+	FILTER6							varchar(1),
+	FILTER7							varchar(1),
+	FILTER8							varchar(1),
+	FILTER9							varchar(1),
+	INST_YMD						timestamp 			not null  now(),
+	UPDT_YMD						date,
+	DEL_YMD							date,
+	DEL_FLG							int(1)			default 0,
+	MGR_NAME						varchar(24),
+	UPD_PGM_ID						varchar(8),
+	UPDT_HISTRY						varchar(75),
+	primary key (SEQ_NO)
+) engine=InnoDB;
+
+drop table if exists S_NANACO_POINT_IRAI_SEQ;
+create table S_NANACO_POINT_IRAI_SEQ (
+	id int not null auto_increment primary key
+) engine = InnoDB;
